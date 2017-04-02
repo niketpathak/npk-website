@@ -39,3 +39,6 @@ jspm_packages
 
 # Editor
 .idea/
+
+# Dist directory
+dist/
