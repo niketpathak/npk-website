@@ -1,5 +1,8 @@
 var path = require('path');
 
+var DEVELOPMENT = process.env.NODE_ENV === 'development';
+var PRODUCTION = process.env.NODE_ENV === 'production';
+
 module.exports = {
 
     entry: {
