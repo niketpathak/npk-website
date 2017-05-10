@@ -1,5 +1,11 @@
-var greet = "Whats up!";
-var newMessage = () => (`<p>${greet}</p>`);
+console.log('live');
 
-var app = document.getElementById('app');
-app.innerHTML = '<p>Hello there</p>' + newMessage();
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.js';
+
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
