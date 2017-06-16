@@ -1,8 +1,33 @@
 import React, { Component, PropTypes } from 'react';
 
 class AddProject extends Component {
+
+constructor() {
+  super();
+  this.state = {
+    newProject: {}
+  }
+}
+
   static defaultProps = {
     categories: ['Web Design','Mob Design', 'Mob app']
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.refs.title.value === '') {
+      console.debug('empty submitted', this);
+    } else {
+      this.setState({
+        newProject: {
+          title: this.refs.title.value,
+          category: this.refs.category.value
+        }
+      }, function() {
+        console.debug('callback', this.state);
+        this.props.addProject(this.state.newProject);
+      })
+    }
   }
 
   render() {
@@ -12,7 +37,7 @@ class AddProject extends Component {
     return (
       <div className="addProject">
         <h3>Add Project</h3>
-        <form>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <label>Title</label><br/>
             <input type="text" ref="title" />
@@ -23,6 +48,8 @@ class AddProject extends Component {
                 {categoryOptions}
             </select>
           </div>
+          <br/>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
