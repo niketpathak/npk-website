@@ -29,7 +29,10 @@ class App extends Component {
   }
 
   handleAddProject(project) {
-    console.log('project', project);
+    // console.log('project', project);
+    let projects = this.state.projects;
+    projects.push(project);
+    this.setState({projects:projects});
   }
 
   render() {
