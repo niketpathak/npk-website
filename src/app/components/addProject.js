@@ -20,6 +20,7 @@ constructor() {
     } else {
       this.setState({
         newProject: {
+          id: Math.floor((Math.random() * 100) + 1),
           title: this.refs.title.value,
           category: this.refs.category.value
         }

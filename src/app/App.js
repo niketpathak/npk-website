@@ -14,14 +14,17 @@ class App extends Component {
     //ajax to be called here
     this.setState({projects: [
       {
+        id: 1,
         title: 'Business Website',
         category: 'Web Design'
       },
       {
+        id: 2,
         title: 'Social App',
         category: 'Mob Design'
       },
       {
+        id: 3,
         title: 'Ecommerce',
         category: 'Mob app'
       }
@@ -35,11 +38,18 @@ class App extends Component {
     this.setState({projects:projects});
   }
 
+  handleDeleteProject(id) {
+    let projects = this.state.projects;
+    let index = projects.findIndex(x => x.id === id);
+    projects.splice(index, 1);
+    this.setState({projects:projects});
+  }
+
   render() {
     return (
       <div className="container">
         <AddProject addProject={this.handleAddProject.bind(this)}/>
-        <Projects projects={this.state.projects} />
+        <Projects onDelete={this.handleDeleteProject.bind(this)} projects={this.state.projects} />
       </div>
     );
   }
