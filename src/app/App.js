@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
 import Projects from './components/Projects.js';
 import AddProject from './components/addProject.js';
+import $ from 'jquery';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      projects: []
+      projects: [],
+      todos: []
     }
   }
+
+  getTodoItems() {
+    $.ajax({
+      url: 'https://jsonplaceholder.typicode.com/todos',
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({todos: data}, function() {
+            console.log('callback xhr', this.state);
+        });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log('xhr error', err);
+      }
+    });
+  }
+
 
   componentWillMount() {
     //ajax to be called here
@@ -29,6 +48,11 @@ class App extends Component {
         category: 'Mob app'
       }
     ]});
+    this.getTodoItems();
+  }
+
+  componentDidMount() {
+    this.getTodoItems();
   }
 
   handleAddProject(project) {
