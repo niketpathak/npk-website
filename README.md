@@ -1,7 +1,7 @@
 
 ## Personal Portfolio
 
-Deployed version [v1.0.0](https://www.niketpathak.com)
+Deployed version [v1.0.0](http://www.niketpathak.com)
 
 ### License
 
