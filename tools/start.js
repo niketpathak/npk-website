@@ -28,7 +28,7 @@ const watchOptions = {
   // poll: true,
 
   // Decrease CPU or memory usage in some file systems
-  // ignored: /node_modules/,
+  ignored: /node_modules/,
 };
 
 function createCompilationPromise(name, compiler, config) {
